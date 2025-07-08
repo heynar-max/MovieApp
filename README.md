@@ -44,8 +44,8 @@ npm install react-native-gesture-handler
 npm install @react-native-masked-view/masked-view
 ```
 
-debe importar este paquete
-```sh
-import android.os.Bundle;
-```
 
+instalar axios
+```sh
+npm i axios;
+```
