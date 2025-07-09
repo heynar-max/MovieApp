@@ -1,30 +1,41 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React from 'react'
+
 import { RootStackParams } from '../../navigation/Navigation';
 
-import {  Text, View } from 'react-native';
-import { useMovie } from '../../hook/useMovie';
 import { MovieHeader } from '../../components/movie/MovieHeader';
+
+import { ScrollView } from 'react-native-gesture-handler';
+import { useMovie } from '../../hook/useMovie';
+import { Text } from 'react-native';
+import { MovieDetails } from '../../components/movie/movieDetails';
 
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'>{};
 
+
 export const DetailsScreen = ({ route }: Props) => {
 
     const { movieId } = route.params;
+    // const { movieId } = useRoute().params;
+    const { isLoading, movie, cast = [] } = useMovie( movieId );
 
-    const {isLoading, movie} = useMovie( movieId);
-
-    if ( isLoading ) {
-        return <Text>Loading</Text>
+    if (isLoading) {
+        return <Text>hola</Text>
     }
 
     return (
-        <View>
-            <MovieHeader originalTitle={movie!.originalTitle}
-            title={movie!.title}
-            poster={movie!.poster}
-            />
-        </View>
+        <ScrollView>
+        
+        {/* Header */}
+        <MovieHeader 
+            originalTitle={ movie!.originalTitle} 
+            title={ movie!.title}
+            poster={ movie!.poster }
+        />
+
+        {/* Details */}
+        <MovieDetails movie={ movie! } cast={cast} />
+
+        </ScrollView>
     )
 }
