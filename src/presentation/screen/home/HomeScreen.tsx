@@ -11,7 +11,7 @@ export const HomeScreen = () => {
     // para que la pagina top quede acorde a la pantalla no tan arriba 
     const { top } = useSafeAreaInsets();
 
-    const {isLoading, nowPlaying, popular, topRated, upcoming} = useMovies();
+    const {isLoading, nowPlaying, popular, topRated, upcoming, popularNextPage } = useMovies();
 
     if (isLoading) {
         return <Text>Cargando...</Text>
@@ -25,7 +25,11 @@ export const HomeScreen = () => {
                 <PosterCarousel movies={ nowPlaying }/>
 
                 {/* populares  */}
-                <HorizontalCarousel movies={popular} title='Populares'/>
+                <HorizontalCarousel 
+                    movies={popular} 
+                    title='Populares'
+                    loadNextPage={ popularNextPage }
+                    />
 
                 {/* top Rated  */}
                 <HorizontalCarousel movies={topRated} title='Mejor Calificadas'/>
