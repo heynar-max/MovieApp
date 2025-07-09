@@ -18,7 +18,7 @@ export const MoviePoster = ({movie, height = 420, width = 300 }: Props) => {
 
     return (
         <Pressable
-        onPress={ () => navigation.navigate('Details',{ movieID: movie.id }) }
+        onPress={ () => navigation.navigate('Details',{ movieId: movie.id }) }
         style={ ({ pressed }) => ({
             width,
             height,
