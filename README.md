@@ -49,3 +49,8 @@ instalar axios
 ```sh
 npm i axios;
 ```
+
+instalar dotenv
+```sh
+npm install react-native-dotenv;
+```
